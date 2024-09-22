@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class GameService {
 
-    private final GameBoard gameBoard;
+    private GameBoard gameBoard;
 
     public GameService() {
         this.gameBoard = new GameBoard(20, 20); // 20x20 board size
@@ -60,13 +60,7 @@ public class GameService {
 
     public void resetGame() {
         // Reset the game state variables
-        Snake snake = new Snake(gameBoard.getWidth() / 2, gameBoard.getWidth() / 2); // Recreate the snake
-
-        gameBoard.setSnake(snake);
-        gameBoard.generateFood();
-        gameBoard.setGameOver(false);
+        gameBoard = new GameBoard(20, 20);
     }
 
 }
-
-//#35de00 #fd0200 #000000

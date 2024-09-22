@@ -9,7 +9,6 @@ import java.util.LinkedList;
 @Setter
 public class Snake {
     private LinkedList<int[]> body; // List of snake parts (each represented by an [x, y] coordinate)
-    private String direction = "RIGHT"; // Initial direction
 
     public Snake(int startX, int startY) {
         body = new LinkedList<>();

@@ -2,16 +2,16 @@ package com.snakegame.backend.controller;
 
 import com.snakegame.backend.model.GameBoard;
 import com.snakegame.backend.service.GameService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/snake-game")
 @CrossOrigin(origins = "http://localhost:3000") // Add this to allow CORS from the React app
+@RequiredArgsConstructor
 public class GameController {
 
-    @Autowired
-    private GameService gameService;
+    private final GameService gameService;
 
     @GetMapping("/state")
     public GameBoard getGameState() {
@@ -24,11 +24,6 @@ public class GameController {
             gameService.moveSnake(direction);
         }
         return gameService.getGameState();
-    }
-
-    @GetMapping("/isGameOver")
-    public boolean isGameOver() {
-        return gameService.isGameOver();
     }
 
     @PostMapping("/reset")
